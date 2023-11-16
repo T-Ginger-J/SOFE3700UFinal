@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
   editBtn.addEventListener('click', function() {
       console.log('Edit itinerary clicked');
       // Code to handle editing an itinerary
-      // (Keep this as it is or modify as needed for edit functionality)
+      window.location.href = 'edit-itinerary.html';
   });
 });

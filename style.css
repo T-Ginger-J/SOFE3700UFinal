@@ -1,17 +1,10 @@
 /* styles.css */
 body {
   font-family: Arial, sans-serif;
+  background-color: #032139;
   margin: 0;
   padding: 0;
   display: flex;
-}
-
-.sidebar {
-  background-color: #333;
-  color: white;
-  min-height: 100vh;
-  width: 250px;
-  padding: 20px;
 }
 
 .menu-btn {
@@ -29,6 +22,7 @@ body {
 
 header {
   margin-bottom: 20px;
+  color: white;
 }
 
 .button-container {
@@ -73,7 +67,7 @@ header {
 }
 
 .logo {
-  height: 50px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
   width: auto;
 }
 
@@ -81,5 +75,5 @@ header {
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-top: 70px; /* Adjust this value based on the size of your logo */
+  margin-top: 100px; /* Adjust this value based on the size of your logo */
 }
