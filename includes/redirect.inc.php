@@ -1,7 +1,7 @@
 <?php 
 
 function check_login($pdo) {
-    
+
     if (isset($_SESSION['Id'])) {
         $id = $_SESSION['Id'];
         $query = "SELECT * FROM users WHERE Id = :id LIMIT 1";
@@ -17,6 +17,6 @@ function check_login($pdo) {
         }
     }
 
-    header("location: \Login-and-Registration\login.php");	
+    header("location: ..\Login-and-Registration\login.php");	
 	die;
 }
