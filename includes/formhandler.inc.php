@@ -37,3 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
 } else {
     header("Location: ../Main/index.php"); // at the end, take the user to index page
 }
+
+
+
