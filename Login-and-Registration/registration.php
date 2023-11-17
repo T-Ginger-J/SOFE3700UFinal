@@ -10,7 +10,7 @@
     <div class="container">
         <div class="box form-box">
              <header>Sign Up</header>
-             <form action="" method="post">
+             <form action="../includes/formhandler.inc.php" method="post">
                 <div class="field input">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" autocomplete="off" required >
