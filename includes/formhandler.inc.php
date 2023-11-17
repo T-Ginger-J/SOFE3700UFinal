@@ -23,12 +23,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":pwd", $password);
 
-        $stmt->execute();
+        $stmt->execute(); //execute statement
 
-        $pdo = null; // disconnect the database
-        $stmt = null;
+        $stmt = null; // empty statement
 
-        header("Location: ../Main/index.php"); // at the end, take the user to index page
+        //get userID from inserted statement
+        $query = "SELECT * FROM users WHERE Username = :user_name LIMIT 1";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+
+        $stmt->execute(); //execute statement
+
+        $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user_data) {
+            session_start();
+            $_SESSION['Id'] = $user_data['Id'];
+            header("Location: ../Main/index.php"); // at the end, take the user to index page
+        }
+
+        
 
         die();
     } catch (PDOException $e) {
