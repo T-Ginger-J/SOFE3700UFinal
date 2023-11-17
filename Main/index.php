@@ -1,3 +1,12 @@
+<?php
+session_start();
+include("/includes/dbh.inc.php");
+include("/includes/redirect.inc.php");
+
+$user_data = check_login($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
