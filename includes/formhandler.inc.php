@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         require_once "dbh.inc.php"; // dbh.inc.php has the information to connect to your local database
 
         /* Takes the data entered by the user and inserts it into the pre-existing 'users' table */
-        $query = "INSERT INTO users (username, email, pwd) VALUES 
+        $query = "INSERT INTO User (username, email, pwd) VALUES 
         (:username, :email, :pwd);"; 
 
         $stmt = $pdo->prepare($query);
@@ -28,14 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         $pdo = null; // disconnect the database
         $stmt = null;
 
-        header("Location: ../Main/index.php"); // at the end, take the user to index page
+        header("Location: ../Login-and-Registration/login.php"); // at the end, take the user to index page
 
         die();
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());
     }
 } else {
-    header("Location: ../Main/index.php"); // at the end, take the user to index page
+    header("Location: ../Login-and-Registration/login.php"); // at the end, take the user to index page
 }
 
 
