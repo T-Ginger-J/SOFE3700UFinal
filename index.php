@@ -12,7 +12,7 @@
 
     <!-- Logo Link -->
     <div class="logo-header"> 
-        <a href="index.html">
+        <a href="index.php">
             <img src="logo.jpg" alt="Logo" class="logo">
         </a>
     </div>

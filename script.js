@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
   addBtn.addEventListener('click', function() {
       console.log('Add itinerary clicked');
       // Redirect to the add-itinerary.html page when clicked
-      window.location.href = 'add-itinerary.html';
+      window.location.href = 'add-itinerary.php';
   });
 
   editBtn.addEventListener('click', function() {
       console.log('Edit itinerary clicked');
       // Code to handle editing an itinerary
-      window.location.href = 'edit-itinerary.html';
+      window.location.href = 'edit-itinerary.php';
   });
 });
