@@ -21,7 +21,7 @@
     
         if (!empty($user_name) && !empty($password)) {
             // Save to DB using prepared statements to prevent SQL injection
-            $query = "SELECT * FROM users WHERE Username = :user_name LIMIT 1";
+            $query = "SELECT * FROM user WHERE Username = :user_name LIMIT 1";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
             $stmt->execute();
@@ -30,7 +30,7 @@
     
             if ($user_data && password_verify($password, $user_data['Password'])) {
                 session_start();
-                $_SESSION['Id'] = $user_data['Id'];
+                $_SESSION['UserID'] = $user_data['UserID'];
                 header("Location: checkUser.php");
                 die;
             } else {

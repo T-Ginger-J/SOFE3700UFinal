@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         $stmt = null; // empty statement
 
         //get userID from inserted statement
-        $query = "SELECT * FROM users WHERE Username = :user_name LIMIT 1";
+        $query = "SELECT * FROM user WHERE Username = :user_name LIMIT 1";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
     
         if ($user_data) {
             session_start();
-            $_SESSION['Id'] = $user_data['Id'];
+            $_SESSION['UserID'] = $user_data['UserID'];
             header("Location: ../Main/index.php"); // at the end, take the user to index page
         }
 
