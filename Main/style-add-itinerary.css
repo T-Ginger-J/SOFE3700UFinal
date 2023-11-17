@@ -49,7 +49,7 @@ form {
     padding: 20px;
     margin-top: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 input[type="text"],
@@ -65,7 +65,7 @@ button[type="submit"] {
     display: block;
     width: 100%;
     padding: 10px;
-    background: #333;
+    background: #6496c1;
     color: white;
     border: none;
     border-radius: 5px;
