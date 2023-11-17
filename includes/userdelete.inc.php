@@ -6,21 +6,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
 {
     // assign variables (starting with $) to the names of the form (note: match the names exactly from registration.php)
     $username = $_POST["username"];
-    $email = $_POST["email"];
     $password = $_POST["password"];
 
     try {
         require_once "dbh.inc.php"; // dbh.inc.php has the information to connect to your local database
 
         /* Takes the data entered by the user and inserts it into the pre-existing 'users' table */
-        $query = "INSERT INTO users (username, email, pwd) VALUES 
-        (:username, :email, :pwd);"; 
-
+        $query = "DELETE FROM users WHERE username = :username AND pwd = :pwd;";
         $stmt = $pdo->prepare($query);
 
         // We do prepared statements in order to avoid users from typing malicious queries directly into the form
         $stmt->bindParam(":username", $username);
-        $stmt->bindParam(":email", $email);
         $stmt->bindParam(":pwd", $password);
 
         $stmt->execute();

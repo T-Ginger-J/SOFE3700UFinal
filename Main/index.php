@@ -35,5 +35,23 @@
     </div>
 
     <script src="script.js"></script>
+
+    <h3>Change account</h3>
+    
+    <form action="../includes/userupdate.inc.php" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <button>Update</button>
+    </form>
+    
+    <h3>Delete account</h3>
+    
+    <form action="../includes/userdelete.inc.php" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button>Delete</button>
+    </form>
+
 </body>
 </html>

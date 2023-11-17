@@ -13,9 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         require_once "dbh.inc.php"; // dbh.inc.php has the information to connect to your local database
 
         /* Takes the data entered by the user and inserts it into the pre-existing 'users' table */
-        $query = "INSERT INTO users (username, email, pwd) VALUES 
-        (:username, :email, :pwd);"; 
-
+        $query = "UPDATE users SET username = :username, email = :email, pwd = :pwd
+        WHERE id = 2;";
         $stmt = $pdo->prepare($query);
 
         // We do prepared statements in order to avoid users from typing malicious queries directly into the form
