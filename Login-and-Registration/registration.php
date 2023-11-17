@@ -30,7 +30,7 @@
                     <input type="submit" name="submit" value="Login" class="btn" required >
                 </div>
                 <div class="links">
-                    Already a member? <a href="login.html"><u>Sign In</u></a>
+                    Already a member? <a href="login.php"><u>Sign In</u></a>
                 </div>
              </form>
         </div>

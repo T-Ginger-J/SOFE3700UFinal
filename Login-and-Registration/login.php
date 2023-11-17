@@ -25,7 +25,7 @@
                     <input type="submit" name="submit" value="Login" class="btn" required >
                 </div>
                 <div class="links">
-                    Don't have an account? <a href="registration.html"><u>Sign Up Now</u></a>
+                    Don't have an account? <a href="registration.php"><u>Sign Up Now</u></a>
                 </div>
              </form>
         </div>
