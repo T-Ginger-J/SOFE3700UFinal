@@ -2,9 +2,9 @@
 
 function check_login($pdo) {
 
-    if (isset($_SESSION['Id'])) {
-        $id = $_SESSION['Id'];
-        $query = "SELECT * FROM users WHERE Id = :id LIMIT 1";
+    if (isset($_SESSION['UserID'])) {
+        $id = $_SESSION['UserID'];
+        $query = "SELECT * FROM user WHERE UserId = :id LIMIT 1";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();

@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method instead of GET
 {
     // assign variables  to the names of the form and session
-    $userID = $_SESSION['Id'];
+    $userID = $_SESSION['UserID'];
     $end = $_POST["start-date"];
     $start = $_POST["end-date"];
 
