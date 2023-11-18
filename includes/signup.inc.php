@@ -17,39 +17,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         // ERROR HANDLER
         $errors = [];
 
-        echo 'test';
         if (is_input_empty($username, $email, $password)) {
             $errors["empty_input"] = "Fill in all fields!";
         }
-        echo 'teset1';
+
         if (is_email_invalid($email)){
             $errors["invalid_email"] = "Invalid email used!";
         }
-        echo 'test2';
         
         if (is_username_taken($pdo, $username)){
             $errors["username_taken"] = "Userame already taken!";
         } 
-        echo 'test3';
+
         if (is_email_registered($pdo, $email)){
             $errors["email_used"] = "Email already registered!"; 
         } 
 
         require_once 'config_session.inc.php';
 
-        echo 'test4';
         if ($errors){
-            echo 'test5';
             header("Location: ../Login-and-Registration/registration.php");
             $_SESSION["errors_signup"] = $errors;
-            echo 'Errortest';
             die();
         } 
 
         create_user($pdo, $username, $email, $password);
-        echo 'test5';
         header("Location: ../Main/index.php?signup-success");
-        echo 'test6';
 
         $pdo = null;
         $stmt = null;
@@ -61,6 +54,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
     header("Location: ../Login-and-Registration/registration.php"); // at the end, take the user to index page
     die();
 }
-
-
-
