@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         } 
 
         create_user($pdo, $username, $email, $password);
-        header("Location: ../Main/index.php?signup-success");
+        header("Location: ../Login-and-Registration/registration.php?signup=success");
 
         $pdo = null;
         $stmt = null;
