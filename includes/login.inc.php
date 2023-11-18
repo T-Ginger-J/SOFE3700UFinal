@@ -12,41 +12,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         // ERROR HANDLER
         $errors = [];
 
-        echo "test1";
         if (is_input_empty($username, $password)) {
             $errors["empty_input"] = "Fill in all fields!";
         }
 
-        echo "test2";
         $result = get_user($pdo, $username);
 
-        echo "test3";
         if (is_username_wrong($result)) {
             $errors["login_incorrect"] = "Incorrect login info!";
         }
 
-        echo "test4";
         if (!is_username_wrong($result) && is_password_wrong ($password, $result["pwd"])) {
             $errors["login_incorrect"] = "Incorrect login info!";
         }
         require_once 'config_session.inc.php';
 
-        echo "test5";
         if ($errors){
             $_SESSION["erros_login"] = $errors;
             header("Location: ../Login-and-Registration/login.php");
-            echo "testfuck";
             die();
         } 
 
-        /*
-        $_SESSION["user_id"] = $result["id"];
-        $_SESSION["user_username"] = htmlspecialchars($result["username"]);
-        */
         
         header("Location: ../Main/index.php?login=success");
 
-        echo "test6";
         $pdo = null;
         $stmt = null;
 

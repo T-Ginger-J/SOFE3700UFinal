@@ -1,10 +1,3 @@
-<?php
-require_once '../includes/config_session.inc.php';
-require_once '../includes/signup_view.inc.php';
-require_once '../includes/login_view.inc.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,9 +28,6 @@ require_once '../includes/login_view.inc.php';
                     Don't have an account? <a href="registration.php"><u>Sign Up Now</u></a>
                 </div>
              </form>
-             <?php 
-             check_login_errors();
-             ?>
         </div>
     </div>
 </body>
