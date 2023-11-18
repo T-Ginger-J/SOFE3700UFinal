@@ -19,7 +19,33 @@
 
     <div class="main-content">
         <header>
-            <h1>Welcome <span id="userName">James Smith</span></h1>  
+        <?php
+        // Assuming the user is logged in and their user ID is stored in $_SESSION['UserID']
+        session_start();
+
+        if (isset($_SESSION['UserID'])) {
+            // Connect to your database
+            $pdo = new PDO('mysql:host=localhost;dbname=myfirstdatabase', 'root', '');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Prepare and execute a query to retrieve the username
+            $stmt = $pdo->prepare("SELECT username FROM User WHERE UserID = ?");
+            $stmt->execute([$_SESSION['UserID']]);
+            
+            // Fetch the username from the database
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                $username = $user['username'];
+                // Display the username on the webpage
+                echo "<h1>Logged in as: $username</h1>";
+            } else {
+                echo "<p>User not found.</p>";
+            }
+        } else {
+            echo "<p>User not logged in.</p>";
+        }
+        ?>
         </header>
 
         <div class="button-container">
