@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         require_once 'config_session.inc.php';
 
         if ($errors){
-            header("Location: ../Login-and-Registration/registration.php");
             $_SESSION["errors_signup"] = $errors;
+            header("Location: ../Login-and-Registration/registration.php");
             die();
         } 
 
