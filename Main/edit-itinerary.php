@@ -1,6 +1,8 @@
 <?php
+require_once  '../includes/dbh.inc.php';
+/*
 
-$dsn = "mysql:host=localhost;dbname=myfirstdatabase";
+$dsn = "mysql:host=localhost;dbname=project";
 $dbusername = "root";
 $dbpassword = "";
 
@@ -9,8 +11,8 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "connection failed: " . $e->getMessage();
-}
-?>
+}*/
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
