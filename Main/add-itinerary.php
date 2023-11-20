@@ -1,3 +1,48 @@
+<?php
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method instead of GET
+{
+    //include db connection
+    include_once("../includes/dbh.inc.php");
+
+    // assign variables  to the names of the form and session
+    
+    $userID = 1;
+    $end = $_POST["start-date"];
+    $start = $_POST["end-date"];
+    $country = $_POST["country-search"];
+
+    try {
+        require_once "dbh.inc.php"; // dbh.inc.php has the information to connect to your local database
+
+        /* Takes the data entered by the user and inserts it into the pre-existing 'itinerary' table */
+        $query = "INSERT INTO itinerary (UserID, StartDate, EndDate, Country) VALUES 
+        (:user, :startD, :endD, :country);"; 
+
+        $stmt = $pdo->prepare($query);
+
+        // We do prepared statements in order to avoid users from typing malicious queries directly into the form
+        $stmt->bindParam(":user", $userID);
+        $stmt->bindParam(":startD", $start);
+        $stmt->bindParam(":endD", $end);
+        $stmt->bindParam(":country", $country);
+
+        $stmt->execute();
+
+        $pdo = null; // disconnect the database
+        $stmt = null;
+
+        die();
+        
+        header("Location: itinerary-details.php"); // at the end, take the user to details page
+    } catch (PDOException $e) {
+        die("Query Failed: " . $e->getMessage());
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
