@@ -8,14 +8,16 @@ create a new database and call it 'myfirstdatabase' because that's the name I've
 
 copy past the below sql code and press the 'go' button to make the table.
 
-UPDATE table user (
-UserID INT(11) NOT NULL AUTO_INCREMENT,
-pwd VARCHAR(255) NOT NULL,
-created_at DATETIME NOT NULL DEFAULT CURRENT_TIME
+ALTER table user (
+MODIFY COLUMN UserID INT(11) NOT NULL AUTO_INCREMENT,
+ADD pwd VARCHAR(255) NOT NULL,
+ADD created_at DATETIME NOT NULL DEFAULT CURRENT_TIME
 );
 
-UPDATE table itinerary (
-Itinerary INT(11) NOT NULL, AUTO_INCREMENT
+ 
+ALTER table itinerary (
+MODIFY COLUMN Itinerary INT(11) NOT NULL, AUTO_INCREMENT,
+ADD Country VARCHAR(255)
 );
 
 code should be working now i think... too tired to check if instructions are clear.
