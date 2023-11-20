@@ -25,7 +25,7 @@
 
         if (isset($_SESSION['UserID'])) {
             // Connect to your database
-            $pdo = new PDO('mysql:host=localhost;dbname=myfirstdatabase', 'root', '');
+            $pdo = new PDO('mysql:host=localhost;dbname=Project', 'root', '');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Prepare and execute a query to retrieve the username

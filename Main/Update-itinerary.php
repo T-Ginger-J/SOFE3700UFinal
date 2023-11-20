@@ -1,7 +1,5 @@
 <?php
-$dsn = "mysql:host=localhost;dbname=myfirstdatabase";
-$dbusername = "root";
-$dbpassword = "";
+require_once '../includes/dbh.inc.php';
 
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword);

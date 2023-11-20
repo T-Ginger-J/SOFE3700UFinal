@@ -4,5 +4,5 @@ document.getElementById('itinerary-form').addEventListener('submit', function(ev
     // Here you can handle the form data if needed
 
     // Redirect to another page
-    window.location.href = 'itinerary-details.html'; 
+    window.location.href = 'itinerary-details.php'; 
 });
