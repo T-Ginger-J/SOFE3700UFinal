@@ -11,13 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
     $userID = 1;
     $end = $_POST["start-date"];
     $start = $_POST["end-date"];
+    $country = $_POST["country-search"];
 
     try {
         require_once "dbh.inc.php"; // dbh.inc.php has the information to connect to your local database
 
         /* Takes the data entered by the user and inserts it into the pre-existing 'itinerary' table */
-        $query = "INSERT INTO itinerary (UserID, StartDate, EndDate) VALUES 
-        (:user, :startD, :endD);"; 
+        $query = "INSERT INTO itinerary (UserID, StartDate, EndDate, Country) VALUES 
+        (:user, :startD, :endD, :country);"; 
 
         $stmt = $pdo->prepare($query);
 
@@ -25,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         $stmt->bindParam(":user", $userID);
         $stmt->bindParam(":startD", $start);
         $stmt->bindParam(":endD", $end);
+        $stmt->bindParam(":country", $country);
 
         $stmt->execute();
 
