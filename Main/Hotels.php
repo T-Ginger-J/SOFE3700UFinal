@@ -21,18 +21,33 @@
 
         </div>
     </div>
+    <script>
+        // Function to get the itineraryID from sessionStorage
+        function getItineraryID() {
+            return sessionStorage.getItem('clickedItineraryID');
+        }
+
+        // Function to handle form submission with itineraryID
+        function submitFormWithItineraryID(form) {
+            const itineraryID = getItineraryID(); // Retrieve the itineraryID
+            form.querySelector('input[name="itineraryID"]').value = itineraryID; // Set the value in the hidden input field
+            form.submit(); // Submit the form with the itineraryID
+        }
+    </script>
+
     <div class="container">
         <h2 style="color: orange;">Hotels</h2>
 
-        <!-- Display hotels as buttons -->
         <?php
         try {
             require_once 'fetch_hotels.php'; // Fetch hotels from a separate file
             foreach ($result as $row) {
                 ?>
                 <form action="handle_booking.php" method="post" style="display: inline-block;">
-                    <input type="hidden" name="hotelID" value="<?php echo $row['HotelID']; ?>">
-                    <button class="wide-bar" type="submit">
+                <input type="hidden" name="hotelID" value="<?php echo $row['HotelID']; ?>">
+    <input type="hidden" name="itineraryID" value="<?php echo $_GET['itineraryID']; ?>"> <!-- Pass the itineraryID as a query parameter -->
+    <button class="wide-bar" type="submit">
+                    <button class="wide-bar" type="button" onclick="submitFormWithItineraryID(this.form)">
                         <?php
                         echo "Hotel ID: " . $row['HotelID'] . "<br>" . $row['HotelName'] . "<br>" . $row['HotelAddress'] . "<br> Star Rank: " . $row['StarRank']; 
                         ?>

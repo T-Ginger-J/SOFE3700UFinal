@@ -48,10 +48,14 @@
                     </form>
                 </div>
             <script>
-           // Function to handle redirection
+            // Function to handle redirection
             function redirectTo(destination) {
-                window.location.href = destination;
-            } 
+                const clickedItineraryID = sessionStorage.getItem('clickedItineraryID');
+                const userID = '<?php echo isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '' ?>';
+
+                // Redirect to the destination page with ItineraryID and UserID as parameters
+                window.location.href = `${destination}?itineraryID=${clickedItineraryID}&userID=${userID}`;
+            }
 
 
             // Event listeners for adding different items to the itinerary
