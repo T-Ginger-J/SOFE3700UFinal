@@ -1,35 +1,21 @@
-Added basic form validation to Cam's registration page.
+CREATE TABLE MyItinerary (
+ItineraryID INT PRIMARY KEY,
+UserID INT,
+FlightID INT,
+HotelID INT,
+AttractionID INT
+);
 
-# Set up phpmyadmin
+Paste the above code into MySQL to create the table for the following code on the feature/addFlight branch to work?
 
-in browser type: localhost/phpmyadmin
+The code is NOT working, but I'm saving it because it seems close to working.
 
-create a new database and call it 'myfirstdatabase' because that's the name I've used in code. We can change it later.
+This is what the code was _supposed_ to do (but it doesn't work):
 
-copy past the below sql code and press the 'go' button to make the table.
+1. The user can choose any of the airline buttons, and it will display the respective flights for those airlines
+2. Then, this is the new part: The user can click of that flight, and it was supposed to add that flight ID to the MyItinerary table along with the userID (current session) as well as the ItineraryID that it stored from the itinerary-details.php page.
+3. It checks MyItinerary table if the data selected already exists, if it doesn't it adds it to the table.
 
-Drop Table user
-Create Table user (
-UserID INT NOT NULL AUTO_INCREMENT,
-UserName VarChar(100) NOT NULL,
-pwd VARCHAR(255) NOT NULL,
-UserAddress VarChar(250),
-Email VarChar(100),
-ADD created_at DATETIME NOT NULL DEFAULT CURRENT_TIME
-PhoneNum VarChar(20),
-Primary KEY(UserID) );
+but it doesn't do that.
 
-Drop Table itinerary 
-Create Table itinerary (
-ItineraryID INT NOT NULL AUTO_INCREMENT, 
-UserID INT NOT NULL,
-StartDate Date NOT NULL,
-EndDate Date,
-Country VarChar(255),
-Primary KEY(ItineraryID) );
-
-code should be working now i think... too tired to check if instructions are clear.
-
-If it works well, after typing into the registration form, refresh the phpmyadmin page for the users table, and the data should be in there.
-
-good night.
+If you want to trouble shoot and fix this, look into what values are actually being stored/retrieved into the userID/flightID/itineraryID

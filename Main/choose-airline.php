@@ -114,35 +114,97 @@
         }
 
         function displayFlightDetails(flights) {
-            const flightDetailsTable = document.getElementById('flight-details');
-            flightDetailsTable.innerHTML = '';
+    const flightDetailsTable = document.getElementById('flight-details');
+    flightDetailsTable.innerHTML = '';
 
-            // Create table header
-            const tableHeader = document.createElement('thead');
-            tableHeader.innerHTML = `
-                <tr>
-                    <th style="color: orange;">Flight Number</th>
-                    <th style="color: orange;">Departure</th>
-                    <th style="color: orange;">Arrival</th>
-                </tr>
-            `;
-            flightDetailsTable.appendChild(tableHeader);
+    // Create table header
+    const tableHeader = document.createElement('thead');
+    tableHeader.innerHTML = `
+        <tr>
+            <th style="color: orange;">Flight Number</th>
+            <th style="color: orange;">Departure</th>
+            <th style="color: orange;">Arrival</th>
+        </tr>
+    `;
+    flightDetailsTable.appendChild(tableHeader);
 
-            // Create table body
-            const tableBody = document.createElement('tbody');
-            flights.forEach(flight => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                <td style="color: orange;">${flight.FlightNum}</td>
-                <td style="color: orange;">${flight.DepartFrom}</td>
-                <td style="color: orange;">${flight.ArriveAt}</td>
-                `;
-                tableBody.appendChild(row);
+    // Create table body
+    const tableBody = document.createElement('tbody');
+    flights.forEach(flight => {
+        const row = document.createElement('tr');
+        const flightID = flight.FlightID; // Replace with the appropriate property name
+
+        // Add a data-flight-id attribute to each row with the FlightID
+        row.setAttribute('data-flight-id', flightID);
+
+        row.innerHTML = `
+            <td style="color: orange;">${flight.FlightNum}</td>
+            <td style="color: orange;">${flight.DepartFrom}</td>
+            <td style="color: orange;">${flight.ArriveAt}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+    flightDetailsTable.appendChild(tableBody);
+
+    flightDetailsTable.style.display = 'block';
+
+    // Add event listeners to rows after they are created
+    flightDetailsTable.querySelectorAll('tr').forEach(row => {
+        row.addEventListener('click', function() {
+            const flightID = this.getAttribute('data-flight-id');
+            // Add your logic here to handle the flightID click event
+            // e.g., check if it's already added to MyItinerary or perform some action
+            // Add event listener to the flight details table
+        // Add event listener to the flight details table
+document.getElementById('flight-details').addEventListener('click', function (event) {
+    if (event.target.tagName === 'TD') {
+        const flightNum = event.target.parentElement.children[0].textContent;
+        const departure = event.target.parentElement.children[1].textContent;
+        const arrival = event.target.parentElement.children[2].textContent;
+
+        // Retrieve UserID from session (replace this with actual retrieval from session)
+        const userID = sessionStorage.getItem('userID');
+
+        // Retrieve clicked FlightID from the event (assuming data-flight-id attribute)
+        const flightID = event.target.parentElement.getAttribute('data-flight-id');
+
+        // Retrieve ItineraryID from sessionStorage
+        const itineraryID = sessionStorage.getItem('clickedItineraryID');
+
+        // Check if the data already exists in MyItinerary table
+        fetch(`check_my_itinerary.php?userID=${userID}&flightID=${flightID}&itineraryID=${itineraryID}`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.exists) {
+                    // Data does not exist, add it to MyItinerary table
+                    fetch(`add_to_my_itinerary.php?userID=${userID}&flightID=${flightID}&itineraryID=${itineraryID}`)
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                alert(`Flight ${flightNum} (${departure} to ${arrival}) added to MyItinerary!`);
+                            } else {
+                                alert('Failed to add flight to MyItinerary.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error adding to MyItinerary:', error);
+                        });
+                } else {
+                    alert(`Flight ${flightNum} (${departure} to ${arrival}) already exists in MyItinerary.`);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking MyItinerary:', error);
             });
-            flightDetailsTable.appendChild(tableBody);
+    }
+});
 
-            flightDetailsTable.style.display = 'block';
-        }
+        });
+    });
+}
+ 
+
+        
     </script>
 </body>
 </html>
