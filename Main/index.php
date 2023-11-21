@@ -50,16 +50,32 @@
 
         <div class="button-container">
             <!-- Add Itinerary Button with Plus Icon -->
-            <button id="addItinerary" class="btn">
+            <!-- Form encapsulating the Add Itinerary button -->
+            <form action="add-itinerary.php" method="POST"> <!-- Change 'add_itinerary.php' to your processing PHP file -->
+                <button type="submit" name="addItinerary" class="btn">
+                    <i class="fa fa-plus"></i> Add Itinerary
+                </button>
+    </form>
+           <!-- <button id="addItinerary" class="btn">
                 <i class="fa fa-plus"></i> Add Itinerary
-            </button>
-            <!-- Edit Itinerary Button with Pencil Icon -->
+            </button> -->
+            <!-- Edit Itinerary Button with Pencil Icon
+            </form>
             <button id="editItinerary" class="btn">
                 <i class="fa fa-pencil-alt"></i> Edit Itinerary
             </button>
+            <div class="button-container"> -->
+    <!-- Form encapsulating the Edit Itinerary button -->
+    <form action="edit-itinerary.php" method="POST">
+        <button type="submit" name="editItinerary" class="btn">
+            <i class="fa fa-pencil-alt"></i> Edit Itinerary
+        </button>
+    </form>
+</div>
+
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!--<script src="script.js"></script> -->
 </body>
 </html>

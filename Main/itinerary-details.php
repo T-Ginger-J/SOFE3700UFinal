@@ -9,7 +9,7 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
             </a>
         </div>
