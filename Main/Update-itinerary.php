@@ -1,13 +1,12 @@
 <?php
 require_once '../includes/dbh.inc.php';
 
-
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $itineraryID = $_GET['itineraryID'];
+        $itineraryID = $_POST['itineraryID'];
         $startDate = $_POST['startDate'];
         $endDate = $_POST['endDate'];
 
@@ -34,31 +33,26 @@ session_start(); // Start the session
         $stmt->bindParam(':userID', $loggedInUserID);
         $stmt->bindParam(':itineraryID', $itineraryID);
         $stmt->execute();
+    }
 
-        // Fetch the itinerary details for the logged-in user
-        $itinerary = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($itinerary) {
+        // Display a form with editable fields for each attribute
+        ?>
+        <form method="POST" action="">
+            <input type="hidden" name="itineraryID" value="<?php echo $itinerary['ItineraryID']; ?>">
+            <label for="startDate">Start Date:</label>
+            <input type="date" name="startDate" value="<?php echo $itinerary['StartDate']; ?>"><br>
 
-        if ($itinerary) {
-            // Display the form with editable fields for the logged-in user's itinerary
-            ?>
-            <form method="POST" action="">
-                <input type="hidden" name="itineraryID" value="<?php echo $itinerary['ItineraryID']; ?>">
-                <label for="startDate">Start Date:</label>
-                <input type="date" name="startDate" value="<?php echo $itinerary['StartDate']; ?>"><br>
+            <label for="endDate">End Date:</label>
+            <input type="date" name="endDate" value="<?php echo $itinerary['EndDate']; ?>"><br>
 
-                <label for="endDate">End Date:</label>
-                <input type="date" name="endDate" value="<?php echo $itinerary['EndDate']; ?>"><br>
+            <!-- Add other fields as needed -->
 
-                <!-- Add other fields as needed -->
-
-                <input type="submit" value="Update Itinerary">
-            </form>
-            <?php
-        } else {
-            echo "Itinerary not found for the logged-in user.";
-        }
+            <input type="submit" value="Update Itinerary">
+        </form>
+        <?php
     } else {
-        echo "User not logged in.";
+        echo "Itinerary not found.";
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
