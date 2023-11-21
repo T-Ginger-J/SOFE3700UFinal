@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
         require_once 'login_contr.inc.php';
         // ERROR HANDLER
         $errors = [];
-
+/*
         if (is_input_empty($username, $password)) {
             $errors["empty_input"] = "Fill in all fields!";
         }
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") // since Registration is a POST method
             $_SESSION["erros_login"] = $errors;
             header("Location: ../Login-and-Registration/login.php");
             die();
-        } 
+        } */
         // If login is successful, store the user's session ID
         $_SESSION["UserID"] = $result["UserID"]; // Assuming 'id' is the column name for the user ID in your database
         
