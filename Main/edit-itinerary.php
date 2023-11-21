@@ -48,20 +48,31 @@ require_once  '../includes/dbh.inc.php';
 
             <tbody>
                 <?php foreach ($result as $row) { ?>
-                    <tr class="wide-bar" onclick="goToPage('Update-itinerary.php')">
-                        <td>
-                            <a href='Update-itinerary.php?itineraryID=<?php echo $row['ItineraryID']; ?>'>
-                                <?php echo $row['ItineraryID']; ?>
-                            </a>
-                        </td>
-                        <td><?php echo $row['Country']; ?></td>
-                        <td><?php echo $row['StartDate']; ?></td>
-                        <td><?php echo $row['EndDate']; ?></td>
-                    </tr>
-                <?php } ?>
+                <tr class="wide-bar" onclick="redirectToDetails(<?php echo $row['ItineraryID']; ?>)">
+                    <td>
+                        <a href='Update-itinerary.php?itineraryID=<?php echo $row['ItineraryID']; ?>'>
+                            <?php echo $row['ItineraryID']; ?>
+                        </a>
+                    </td>
+                    <td><?php echo $row['Country']; ?></td>
+                    <td><?php echo $row['StartDate']; ?></td>
+                    <td><?php echo $row['EndDate']; ?></td>
+                </tr>
+            <?php } ?>
             </tbody>
+
+            <script>
+                function redirectToDetails(itineraryID) {
+                    // Store the clicked itinerary ID in sessionStorage
+                    sessionStorage.setItem('clickedItineraryID', itineraryID);
+
+                    // Redirect to 'itinerary-details.php'
+                    window.location.href = 'itinerary-details.php';
+                }
+            </script>
+ 
         </table>
-         <?php
+        <?php
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
