@@ -35,29 +35,46 @@ require_once  '../includes/dbh.inc.php';
 
             // Fetch data
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+            <table>
+            <thead>
+                <tr>
+                    <th style="color: orange;">Itinerary ID</th>
+                    <th style="color: orange;">Country</th>
+                    <th style="color: orange;">Start Date</th>
+                    <th style="color: orange;">End Date</th>
+                </tr>
+            </thead>
 
-            // Process the data
-            foreach ($result as $row) { ?>
-                <div class="wide-bar" onclick="goToPage('Update-itinerary.php')">
-                    <?php
-                    echo "<a href='Update-itinerary.php?itineraryID=" . $row['ItineraryID'] . "'>";
-                    echo "Itinerary ID: " . $row['ItineraryID'] . " Start Date: " . $row['StartDate'] . " End Date: " . $row['EndDate'] . "<br>";
-                    // Add more fields as needed
-                    echo "</a><br>";
-                    ?>
-                </div>
-        <?php
-            }
+            <tbody>
+                <?php foreach ($result as $row) { ?>
+                    <tr class="wide-bar" onclick="goToPage('Update-itinerary.php')">
+                        <td>
+                            <a href='Update-itinerary.php?itineraryID=<?php echo $row['ItineraryID']; ?>'>
+                                <?php echo $row['ItineraryID']; ?>
+                            </a>
+                        </td>
+                        <td><?php echo $row['Country']; ?></td>
+                        <td><?php echo $row['StartDate']; ?></td>
+                        <td><?php echo $row['EndDate']; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+         <?php
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     } else {
-        echo "User not logged in."; // Handle case where the user is not logged in
+        echo '<p style="color: white;">User not logged in.</p><br>';
+
     }
     ?>
 </div>
 
 
+</div>
+ 
     <style>
         
 
