@@ -3,23 +3,30 @@ require_once '../includes/dbh.inc.php';
 
 $bookingStatusMessage = ""; // Initialize the message variable
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hotelID'])) {
+echo '<p style="color: white;">Test1</p>';
+
+//if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hotelID'])) {
     try {
+echo '<p style="color: white;">Test2</p>';
         $hotelID = $_POST['hotelID'];
 
         // Check if the combination of values exists before inserting
         $stmtCheck = $pdo->prepare("SELECT * FROM hotelbookings WHERE hotelid = ? AND room = ? AND date = ?");
+echo '<p style="color: white;">Test3</p>';
         $room = 3; // Modify room as needed
         $date = '22220202'; // Modify date as needed
         $stmtCheck->execute([$hotelID, $room, $date]);
+echo '<p style="color: white;">Test4</p>';
         $existingBooking = $stmtCheck->fetch(PDO::FETCH_ASSOC);
 
         if (!$existingBooking) {
             // If no existing booking found, proceed with insertion
 
+echo '<p style="color: white;">Test5</p>';
             // Generate a unique identifier for the booking
             $itineraryID = uniqid();
 
+echo '<p style="color: white;">Test6</p>';
             $stmt = $pdo->prepare("INSERT INTO hotelbookings (hotelid, ItineraryID, room, date, cost) VALUES (?, ?, ?, ?, ?)");
             $room = 3; // Modify room as needed
             $date = '22220202'; // Modify date as needed
@@ -32,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hotelID'])) {
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-}
+//}
 
 try {
     $stmt = $pdo->prepare("SELECT * FROM hotels;");
@@ -53,12 +60,12 @@ try {
 </head>
 
 <body>
-    <!-- Logo Link -->
+    <!-- Logo Link 
     <div class="logo-header">
         <a href="index.php">
             <img src="logo.jpg" alt="Logo" class="logo">
         </a>
-    </div>
+    </div> -->
 
     <div class="container">
         <h2>Hotels</h2>

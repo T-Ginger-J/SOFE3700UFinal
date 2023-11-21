@@ -13,8 +13,6 @@ try {
     echo "connection failed: " . $e->getMessage();
 }*/
 ?> 
-require_once '../includes/dbh.inc.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +36,7 @@ require_once '../includes/dbh.inc.php';
         <h2>Edit Itinerary</h2>
         <?php
         try {
-            $stmt = $pdo->prepare("SELECT * FROM itinerary WHERE UserID = 1;");
+            $stmt = $pdo->prepare("SELECT * FROM itinerary WHERE UserID = 7;");
             $stmt->execute();
 
             // Fetch data
@@ -109,4 +107,3 @@ require_once '../includes/dbh.inc.php';
 </body>
 
 </html>
->>>>>>> 96b382bfe30201edb2da5878ab39dd8212661cd8

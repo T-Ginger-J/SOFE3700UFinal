@@ -32,19 +32,19 @@
 
     <script>
         document.getElementById('addFlights').addEventListener('click', function() {
-            window.location.href = 'flights.html'; // Redirect to flights page
+            window.location.href = 'flights.php'; // Redirect to flights page
         });
 
         document.getElementById('addHotels').addEventListener('click', function() {
-            window.location.href = 'hotels.html'; // Redirect to hotels page
+            window.location.href = 'hotels.php'; // Redirect to hotels page
         });
 
         document.getElementById('addRestaurant').addEventListener('click', function() {
-            window.location.href = 'restaurant.html'; // Redirect to restaurant page
+            window.location.href = 'restaurant.php'; // Redirect to restaurant page
         });
 
         document.getElementById('addAttraction').addEventListener('click', function() {
-            window.location.href = 'attraction.html'; // Redirect to attraction page
+            window.location.href = 'attraction.php'; // Redirect to attraction page
         });
     </script>
 </body>
