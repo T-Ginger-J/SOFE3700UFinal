@@ -1,17 +1,5 @@
 <?php
 require_once  '../includes/dbh.inc.php';
-/*
-
-$dsn = "mysql:host=localhost;dbname=project";
-$dbusername = "root";
-$dbpassword = "";
-
-try {
-    $pdo = new PDO($dsn, $dbusername, $dbpassword);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "connection failed: " . $e->getMessage();
-}*/
 ?> 
 
 <!DOCTYPE html>
@@ -33,10 +21,16 @@ try {
     </div>
 
     <div class="container">
-        <h2>Edit Itinerary</h2>
-        <?php
+    <h2>Edit Itinerary</h2>
+    <?php
+    session_start(); // Start the session
+
+    // Check if the UserID is set in the session
+    if (isset($_SESSION['UserID'])) {
         try {
-            $stmt = $pdo->prepare("SELECT * FROM itinerary WHERE UserID = 7;");
+            // Prepare the query using the logged-in user's ID from the session
+            $stmt = $pdo->prepare("SELECT * FROM itinerary WHERE UserID = :userID");
+            $stmt->bindParam(':userID', $_SESSION['UserID']);
             $stmt->execute();
 
             // Fetch data
@@ -57,8 +51,12 @@ try {
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-        ?>
-    </div>
+    } else {
+        echo "User not logged in."; // Handle case where the user is not logged in
+    }
+    ?>
+</div>
+
 
     <style>
         
