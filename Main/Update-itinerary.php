@@ -1,7 +1,6 @@
 <?php
 require_once '../includes/dbh.inc.php';
 
-session_start(); // Start the session
 
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword);
@@ -23,11 +22,13 @@ try {
         echo "Itinerary updated successfully!";
     }
 
+session_start(); // Start the session
     if(isset($_SESSION['UserID'])) {
         $loggedInUserID = $_SESSION['UserID']; // Retrieve the logged-in user's ID from session
 
-        $itineraryID = 1; // Replace this with the ID of the itinerary to be updated
+        //$itineraryID = 1; // Replace this with the ID of the itinerary to be updated
 
+        $itineraryID = $_GET['itineraryID'];
         // Fetch data for the logged-in user's itinerary
         $stmt = $pdo->prepare("SELECT * FROM itinerary WHERE UserID = :userID AND ItineraryID = :itineraryID");
         $stmt->bindParam(':userID', $loggedInUserID);
