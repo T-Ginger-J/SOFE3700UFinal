@@ -42,7 +42,7 @@ echo '<br>';
         $stmt = null;
         $pdo = null;
 
-        header("Location: itinerary-details.php");
+        header("Location: index.php");
         //exit(); // Terminate the script after redirection
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());

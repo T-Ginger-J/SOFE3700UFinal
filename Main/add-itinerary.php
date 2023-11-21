@@ -34,16 +34,8 @@
             <input type="date" id="end-date" name="end-date" placeholder="End Date">
             <button type="submit">Create Itinerary</button>
         </form>
-<!--
-        <form id="itinerary-form">
-            <input type="text" id="country-search" name="country" placeholder="Search countries...">
-            <input type="date" id="start-date" name="start-date" placeholder="Start Date">
-            <input type="date" id="end-date" name="end-date" placeholder="End Date">
-            <button type="submit">Create Itinerary</button>
-        </form>
--->
+
     </div>
 
-    <!--<script src="form-handler.js"></script> -->
 </body>
 </html>

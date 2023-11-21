@@ -1,54 +1,3 @@
-<?php
-require_once '../includes/dbh.inc.php';
-
-$bookingStatusMessage = ""; // Initialize the message variable
-
-echo '<p style="color: white;">Test1</p>';
-
-//if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hotelID'])) {
-    try {
-echo '<p style="color: white;">Test2</p>';
-        $hotelID = $_POST['hotelID'];
-
-        // Check if the combination of values exists before inserting
-        $stmtCheck = $pdo->prepare("SELECT * FROM hotelbookings WHERE hotelid = ? AND room = ? AND date = ?");
-echo '<p style="color: white;">Test3</p>';
-        $room = 3; // Modify room as needed
-        $date = '22220202'; // Modify date as needed
-        $stmtCheck->execute([$hotelID, $room, $date]);
-echo '<p style="color: white;">Test4</p>';
-        $existingBooking = $stmtCheck->fetch(PDO::FETCH_ASSOC);
-
-        if (!$existingBooking) {
-            // If no existing booking found, proceed with insertion
-
-echo '<p style="color: white;">Test5</p>';
-            // Generate a unique identifier for the booking
-            $itineraryID = uniqid();
-
-echo '<p style="color: white;">Test6</p>';
-            $stmt = $pdo->prepare("INSERT INTO hotelbookings (hotelid, ItineraryID, room, date, cost) VALUES (?, ?, ?, ?, ?)");
-            $room = 3; // Modify room as needed
-            $date = '22220202'; // Modify date as needed
-            $cost = 3; // Modify cost as needed
-
-            $stmt->execute([$hotelID, $itineraryID, $room, $date, $cost]);
-
-            $bookingStatusMessage = "Booking added successfully";
-        } // No need for an else block here since the variable is initialized with an empty string
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-//}
-
-try {
-    $stmt = $pdo->prepare("SELECT * FROM hotels;");
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,48 +9,116 @@ try {
 </head>
 
 <body>
-    <!-- Logo Link 
-    <div class="logo-header">
-        <a href="index.php">
-            <img src="logo.jpg" alt="Logo" class="logo">
-        </a>
-    </div> -->
+<div class="nav">
+        <div class="logo">
+            <a href="index.php">
+                <img src="logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
+            </a>
+        </div>
+        <div class="right-links">
+            <a href="#">Change Profile</a>
+            <a href="../Login-and-Registration/login.html"><button class = "btn">Log Out</button></a>
 
+        </div>
+    </div>
     <div class="container">
-        <h2>Hotels</h2>
+        <h2 style="color: orange;">Hotels</h2>
 
         <!-- Display hotels as buttons -->
         <?php
-        foreach ($result as $row) {
-            ?>
-            <form method="post" style="display: inline-block;">
-                <input type="hidden" name="hotelID" value="<?php echo $row['HotelID']; ?>">
-                <button class="wide-bar" type="submit">
-                    <?php
-                    echo "Hotel ID: " . $row['HotelID'] . "<br>" . $row['HotelName'] . "<br>" . $row['HotelAddress'] . "<br> Star Rank: " . $row['StarRank']; 
-                    ?>
-                </button>
-            </form>
-            <?php
+        try {
+            require_once 'fetch_hotels.php'; // Fetch hotels from a separate file
+            foreach ($result as $row) {
+                ?>
+                <form action="handle_booking.php" method="post" style="display: inline-block;">
+                    <input type="hidden" name="hotelID" value="<?php echo $row['HotelID']; ?>">
+                    <button class="wide-bar" type="submit">
+                        <?php
+                        echo "Hotel ID: " . $row['HotelID'] . "<br>" . $row['HotelName'] . "<br>" . $row['HotelAddress'] . "<br> Star Rank: " . $row['StarRank']; 
+                        ?>
+                    </button>
+                </form>
+                <?php
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
         ?>
-        
 
         <!-- Booking status message -->
         <div>
             <?php
-            echo $bookingStatusMessage; 
-            /*if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hotelID'])) {
-                // Display booking status message here
-                echo "Booking added successfully";
-            }*/
+            if (isset($bookingStatusMessage)) {
+                echo $bookingStatusMessage; // Display the booking status message if set
+            }
             ?>
         </div>
     </div>
 
-    <!-- [Your styles] -->
+    <!-- Your styles -->
     <style>
         /* Your existing styles here */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #032139;
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff; /* Example background color for demonstration */
+        }
+
+        .logo {
+            padding-top: 10px;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .right-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-links a {
+            padding: 0 10px;
+            color: #000;
+        }
+
+        .right-links .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #FFA500;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .right-links .btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+        }
 
         .wide-bar {
             width: 100%;
