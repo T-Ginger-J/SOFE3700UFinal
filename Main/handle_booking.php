@@ -19,11 +19,11 @@ echo '<p style="color: black;">Test1</p>' . '<br>';
         //if (!$existingBooking) {
 echo '<p style="color: black;">Test3</p>' . '<br>';
             // If no existing booking found, proceed with insertion
-            $room = 3; // Modify room as needed
+            $room = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); // Generate a random 3-digit room number
             //$date = '22220204'; // Modify date as needed
             $date = date('Ymd'); // This will fetch the current date in YYYYMMDD format
 
-            $cost = 3; // Modify cost as needed
+            $cost = 100; // Modify cost as needed
 
             $stmt = $pdo->prepare("INSERT INTO hotelbookings (hotelid, ItineraryID, room, date, cost) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$hotelID, $itineraryID, $room, $date, $cost]);
@@ -39,6 +39,6 @@ echo '<p style="color: black;">Test4</p>' . '<br>';
 
 echo '<p style="color: black;">Test5</p>' . '<br>';
 // Redirect back to the index.php after handling the booking
-//header("Location: index.php");
+header("Location: index.php");
 exit();
 ?>
