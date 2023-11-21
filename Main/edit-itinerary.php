@@ -13,6 +13,8 @@ try {
     echo "connection failed: " . $e->getMessage();
 }*/
 ?> 
+require_once '../includes/dbh.inc.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
