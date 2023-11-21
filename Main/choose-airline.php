@@ -17,6 +17,50 @@
             font-family: Arial, sans-serif;
         }
 
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff; /* Example background color for demonstration */
+        }
+
+        .logo {
+            padding-top: 10px;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .right-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-links a {
+            padding: 0 10px;
+            color: #000;
+        }
+
+        .right-links .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #FFA500;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .right-links .btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Your remaining CSS styles */
+
         .title {
             color: #FFA500;
             text-align: center;
@@ -67,9 +111,36 @@
         .flight-table th {
             background-color: orange;
         }
+
+        .logo{
+            padding-top: 10px;
+            
+            font-size: 25px;
+            font-weight: 900;
+            
+        }
+        .logo a{
+            text-decoration: none;
+            color: #000;
+        }
+        .right-links a{
+            padding: 0 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="nav">
+        <div class="logo">
+            <a href="index.php">
+                <img src="logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
+            </a>
+        </div>
+        <div class="right-links">
+            <a href="#">Change Profile</a>
+            <a href="../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
+
+        </div>
+    </div>
     <h1 class="title">Choose Airlines</h1>
     <div class="container">
         <?php

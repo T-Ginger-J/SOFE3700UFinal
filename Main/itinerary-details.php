@@ -32,7 +32,7 @@
 
     <script>
         document.getElementById('addFlights').addEventListener('click', function() {
-            window.location.href = 'flights.php'; // Redirect to flights page
+            window.location.href = 'choose-airline.php'; // Redirect to flights page
         });
 
         document.getElementById('addHotels').addEventListener('click', function() {

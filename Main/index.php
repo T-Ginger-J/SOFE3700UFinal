@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="style-add-itinerary.css">
     <!-- Adding Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
 
     <!-- Logo Link -->
-    <div class="logo-header"> 
-        <a href="index.php">
-            <img src="logo.jpg" alt="Logo" class="logo">
-        </a>
+    <div class="nav">
+        <div class="logo">
+            <a href="index.php">
+                <img src="logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
+            </a>
+        </div>
+        <div class="right-links">
+            <a href="#">Change Profile</a>
+            <a href="../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
+
+        </div>
     </div>
 
     <div class="main-content">
