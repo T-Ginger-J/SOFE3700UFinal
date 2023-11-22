@@ -64,7 +64,7 @@
             });
 
             document.getElementById('addHotels').addEventListener('click', function() {
-                redirectTo('hotels.php');
+                redirectTo('Hotels/hotels.php');
             });
 
             document.getElementById('addRestaurant').addEventListener('click', function() {
@@ -72,7 +72,7 @@
             });
 
             document.getElementById('addAttraction').addEventListener('click', function() {
-                redirectTo('attraction.php');
+                redirectTo('Attractions/attraction.php');
             });
         </script>
 

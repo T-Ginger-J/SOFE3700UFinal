@@ -27,7 +27,7 @@
     
     <div class="search-container">
         <h1>Plan Your Itinerary</h1>
-        <form id="itinerary-form" method="POST" action="handle_itinerary.php">
+        <form id="itinerary-form" method="POST" action="Hotels/handle_itinerary.php">
             <!-- Form fields -->
             <input type="text" id="country" name="country" placeholder="Search countries...">
             <input type="date" id="start-date" name="start-date" placeholder="Start Date">

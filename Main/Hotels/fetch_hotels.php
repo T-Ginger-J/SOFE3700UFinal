@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/dbh.inc.php';
+require_once '../../includes/dbh.inc.php';
 
 $stmt = $pdo->prepare("SELECT * FROM hotels;");
 $stmt->execute();
