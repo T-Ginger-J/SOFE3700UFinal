@@ -131,29 +131,31 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <a href="index.php">
-                <img src="logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
+            <a href="../index.php">
+                <img src="../logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
             </a>
         </div>
         <div class="right-links">
             <a href="#">Change Profile</a>
-            <a href="../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
+            <a href="../../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
 
         </div>
     </div>
     <h1 class="title">Choose Airlines</h1>
     <div class="container">
         <?php
+        echo '<p style="color: black;">Test</p>' . '<br>';
         // Your PHP code to fetch airlines here
         // ...
         // Establish a database connection
         require_once '../../includes/dbh.inc.php';
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        echo '<p style="color: black;">Test1</p>' . '<br>';
         // Fetch airlines from the database
         $stmt = $pdo->query('SELECT * FROM Airlines');
         $airlines = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        echo '<p style="color: black;">Test2</p>' . '<br>';
         foreach ($airlines as $airline) {
             // Add data-attribute to store airline ID
             echo "<button class='airline-button' data-airline-id='{$airline['AirlineID']}'>{$airline['AirlineName']}</button>";

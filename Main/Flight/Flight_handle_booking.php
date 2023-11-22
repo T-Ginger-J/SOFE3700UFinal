@@ -7,7 +7,7 @@ $bookingStatusMessage = ""; // Initialize the message variable
 // Check if the itineraryID and userID are provided as parameters in the URL
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['FlightID'], $_POST['itineraryID'])) {
     try {
-        $flightID = $_POST['flightID'];
+        $flightID = $_POST['FlightID'];
         $itineraryID = $_POST['itineraryID']; // Retrieve the itineraryID from the form submission
 echo '<p style="color: black;">Test1</p>' . '<br>';
         
@@ -19,13 +19,13 @@ echo '<p style="color: black;">Test1</p>' . '<br>';
         //if (!$existingBooking) {
 echo '<p style="color: black;">Test3</p>' . '<br>';
             // If no existing booking found, proceed with insertion
-            $AirlineID = 1; // This will fetch the current date in YYYYMMDD format
-            $flightnum = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); // Generate a random 3-digit room number
+            //$AirlineID = 1; // This will fetch the current date in YYYYMMDD format
+            //$flightnum = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); // Generate a random 3-digit room number
             //$date = '22220204'; // Modify date as needed
-            $DeparetureDate = date('Ymd');
-            $deparetureform = 1;
-            $arriveAt = 3;
-            $length = 101500;
+            //$DeparetureDate = date('Ymd');
+            //$deparetureform = 1;
+            ///$arriveAt = 3;
+            //$length = 101500;
             $Seat = 1;
             $Cost = 1;
 
@@ -43,6 +43,6 @@ echo '<p style="color: black;">Test4</p>' . '<br>';
 
 echo '<p style="color: black;">Test5</p>' . '<br>';
 // Redirect back to the index.php after handling the booking
-header("Location: index.php");
-exit();
+header("Location: ../index.php");
+//exit();
 ?>
