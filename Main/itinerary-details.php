@@ -60,7 +60,7 @@
 
             // Event listeners for adding different items to the itinerary
             document.getElementById('addFlights').addEventListener('click', function() {
-                redirectTo('choose-airline.php');
+                redirectTo('Flights.php');
             });
 
             document.getElementById('addHotels').addEventListener('click', function() {
