@@ -17,7 +17,7 @@
         </div>
         <div class="right-links">
             <a href="#">Change Profile</a>
-            <a href="../../Login-and-Registration/login.html"><button class = "btn">Log Out</button></a>
+            <a href="../../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
 
         </div>
     </div>
@@ -40,16 +40,16 @@
 
         <?php
         try {
-            require_once 'fetch_hotels.php'; // Fetch hotels from a separate file
+            require_once 'fetch_attractions.php'; // Fetch hotels from a separate file
             foreach ($result as $row) {
                 ?>
                 <form action="handle_booking.php" method="post" style="display: inline-block;">
-                <input type="hidden" name="hotelID" value="<?php echo $row['HotelID']; ?>">
+                <input type="hidden" name="attractionID" value="<?php echo $row['AttractionID']; ?>">
     <input type="hidden" name="itineraryID" value="<?php echo $_GET['itineraryID']; ?>"> <!-- Pass the itineraryID as a query parameter -->
     <button class="wide-bar" type="submit">
                     <button class="wide-bar" type="button" onclick="submitFormWithItineraryID(this.form)">
                         <?php
-                        echo "Hotel ID: " . $row['HotelID'] . "<br>" . $row['HotelName'] . "<br>" . $row['HotelAddress'] . "<br> Star Rank: " . $row['StarRank']; 
+                        echo "Attraction ID: " . $row['AttractionID'] . "<br>" . $row['AttractionName'] . "<br>" . $row['AttractionAddress']; 
                         ?>
                     </button>
                 </form>
