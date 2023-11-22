@@ -69,12 +69,12 @@
                 redirectTo('Hotels/hotels.php');
             });
 
-            document.getElementById('addRestaurant').addEventListener('click', function() {
-                redirectTo('restaurant.php');
-            });
-
             document.getElementById('addAttraction').addEventListener('click', function() {
                 redirectTo('Attractions/attraction.php');
+            });
+
+            document.getElementById('json').addEventListener('click', function() {
+                redirectTo('json.php');
             });
         </script>
 

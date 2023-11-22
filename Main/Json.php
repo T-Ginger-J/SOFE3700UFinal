@@ -2,7 +2,7 @@
 
 include_once("../includes/dbh.inc.php");
 
-$iten = 1;
+$iten = $_GET['itineraryID'];
 
 $query = "SELECT Days.Date, Days.Transport
 FROM Days
