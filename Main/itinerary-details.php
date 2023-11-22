@@ -43,10 +43,12 @@
             <form id="itinerary-add">
                         <button type="button" id="addFlights">Add Flights</button>
                         <button type="button" id="addHotels">Add Hotels</button>
-                        <button type="button" id="addRestaurant">Add Restaurant</button>
                         <button type="button" id="addAttraction">Add Attraction</button>
                     </form>
                 </div>
+                <form>
+                <button type="button" id="json" onclick="location.href='Json.php'">Export Itinerary</button>
+</form>
             <script>
             // Function to handle redirection
             function redirectTo(destination) {

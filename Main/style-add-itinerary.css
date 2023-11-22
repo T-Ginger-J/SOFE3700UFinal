@@ -81,6 +81,14 @@ form {
     border-radius: 20px;
 }
 
+#Json {
+        background: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+}
+
 input[type="text"],
 input[type="date"] {
     width: calc(100% - 22px);
