@@ -30,7 +30,8 @@
         // Display the UserID
         echo "<h1>User ID: $userID</h1>";
         ?>
-
+<button type="button" id="showHotels">Show Hotels</button> <!-- Button to trigger showing hotels -->
+<div id="hotelName"></div> <!-- This div will display the hotel name -->
         <script>
             // Retrieve clickedItineraryID from sessionStorage
             const clickedItineraryID = sessionStorage.getItem('clickedItineraryID');
@@ -75,7 +76,31 @@
                 redirectTo('Attractions/attraction.php');
             });
         </script>
+ <script>
+        // Retrieve clickedItineraryID from sessionStorage
+        const clickedItineraryID = sessionStorage.getItem('clickedItineraryID');
 
+        // Create a new element to display Itinerary ID
+        const itineraryIDElement = document.createElement('h1');
+        itineraryIDElement.textContent = `Itinerary ID: ${clickedItineraryID}`;
+        document.body.appendChild(itineraryIDElement);
+
+        // Function to handle AJAX request for hotelID
+        function getHotelName() {
+            const xhrHotel = new XMLHttpRequest();
+            xhrHotel.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    const hotelName = this.responseText;
+                    document.getElementById('hotelName').innerText = `Hotel Name: ${hotelName}`;
+                }
+            };
+            xhrHotel.open('GET', `getHotelID.php?itineraryID=${clickedItineraryID}`, true);
+            xhrHotel.send();
+        }
+
+        // Event listener for "Show Hotels" button
+        document.getElementById('showHotels').addEventListener('click', getHotelName);
+    </script>
         
 </body>
 </html>
