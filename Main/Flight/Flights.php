@@ -147,7 +147,7 @@
         // Your PHP code to fetch airlines here
         // ...
         // Establish a database connection
-        require_once '../includes/dbh.inc.php';
+        require_once '../../includes/dbh.inc.php';
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Fetch airlines from the database
@@ -352,3 +352,4 @@
 </body>
 
 </html>
+

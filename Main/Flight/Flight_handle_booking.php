@@ -1,11 +1,11 @@
 <?php
-require_once '../includes/dbh.inc.php';
+require_once '../../includes/dbh.inc.php';
 echo '<p style="color: black;">Test</p>' . '<br>';
 
 $bookingStatusMessage = ""; // Initialize the message variable
 
 // Check if the itineraryID and userID are provided as parameters in the URL
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['flightID'], $_POST['itineraryID'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['FlightID'], $_POST['itineraryID'])) {
     try {
         $flightID = $_POST['flightID'];
         $itineraryID = $_POST['itineraryID']; // Retrieve the itineraryID from the form submission
@@ -19,17 +19,18 @@ echo '<p style="color: black;">Test1</p>' . '<br>';
         //if (!$existingBooking) {
 echo '<p style="color: black;">Test3</p>' . '<br>';
             // If no existing booking found, proceed with insertion
-            $flightid = 1;
             $AirlineID = 1; // This will fetch the current date in YYYYMMDD format
             $flightnum = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); // Generate a random 3-digit room number
             //$date = '22220204'; // Modify date as needed
-            $DepartureDate = date('Ymd');
+            $DeparetureDate = date('Ymd');
             $deparetureform = 1;
             $arriveAt = 3;
             $length = 101500;
+            $Seat = 1;
+            $Cost = 1;
 
             $stmt = $pdo->prepare("INSERT INTO flightbookings (FlightID, ItineraryID, Seat, Cost) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$FlightID, $ItineraryID, $Seat, $Cost]);
+            $stmt->execute([$flightID, $itineraryID, $Seat, $Cost]);
 
 echo '<p style="color: black;">Testinsert</p>' . '<br>';
             $bookingStatusMessage = "Booking added successfully";
