@@ -2,7 +2,7 @@
 session_start(); // Start the session
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include_once("../includes/dbh.inc.php");
+    include_once("../../includes/dbh.inc.php");
     // Retrieve the UserID from the session
     if(isset($_SESSION['UserID'])) {
         $userID = $_SESSION['UserID'];
@@ -23,7 +23,7 @@ echo '<p style="color: white;">test5.</p>';
 echo '<br>';
 
     try {
-        require_once "../includes/dbh.inc.php";
+        require_once "../../includes/dbh.inc.php";
 
         $query = "INSERT INTO itinerary (UserID, StartDate, EndDate, Country) VALUES (:user, :startD, :endD, :country)";
         $stmt = $pdo->prepare($query);
@@ -42,7 +42,7 @@ echo '<br>';
         $stmt = null;
         $pdo = null;
 
-        header("Location: index.php");
+        header("Location: ../index.php");
         //exit(); // Terminate the script after redirection
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());

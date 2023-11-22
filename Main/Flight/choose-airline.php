@@ -131,13 +131,13 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <a href="index.php">
-                <img src="logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
+            <a href="../index.php">
+                <img src="../logo.jpg" alt="Logo" class="logo" style="width: 100px;height: 100px;">
             </a>
         </div>
         <div class="right-links">
             <a href="#">Change Profile</a>
-            <a href="../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
+            <a href="../../Login-and-Registration/login.php"><button class = "btn">Log Out</button></a>
 
         </div>
     </div>
@@ -147,7 +147,7 @@
         // Your PHP code to fetch airlines here
         // ...
         // Establish a database connection
-        require_once '../includes/dbh.inc.php';
+        require_once '../../includes/dbh.inc.php';
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Fetch airlines from the database

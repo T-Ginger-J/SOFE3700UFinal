@@ -60,11 +60,11 @@
 
             // Event listeners for adding different items to the itinerary
             document.getElementById('addFlights').addEventListener('click', function() {
-                redirectTo('choose-airline.php');
+                redirectTo('Flight/choose-airline.php');
             });
 
             document.getElementById('addHotels').addEventListener('click', function() {
-                redirectTo('hotels.php');
+                redirectTo('Hotels/hotels.php');
             });
 
             document.getElementById('addRestaurant').addEventListener('click', function() {
@@ -72,7 +72,7 @@
             });
 
             document.getElementById('addAttraction').addEventListener('click', function() {
-                redirectTo('attraction.php');
+                redirectTo('Attractions/attraction.php');
             });
         </script>
 

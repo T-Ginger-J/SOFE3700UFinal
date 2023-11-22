@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/dbh.inc.php';
+require_once '../../includes/dbh.inc.php';
 echo '<p style="color: black;">Test</p>' . '<br>';
 
 $bookingStatusMessage = ""; // Initialize the message variable
@@ -39,6 +39,6 @@ echo '<p style="color: black;">Test4</p>' . '<br>';
 
 echo '<p style="color: black;">Test5</p>' . '<br>';
 // Redirect back to the index.php after handling the booking
-header("Location: index.php");
+header("Location: ../index.php");
 exit();
 ?>

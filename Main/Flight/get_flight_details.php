@@ -2,7 +2,7 @@
 // get_flight_details.php
 
 // Establish a database connection
-require_once '../includes/dbh.inc.php';
+require_once '../../includes/dbh.inc.php';
 
 // Check if airline_id is provided in the GET request
 if (isset($_GET['airline_id'])) {
