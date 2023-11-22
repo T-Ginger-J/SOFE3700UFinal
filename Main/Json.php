@@ -14,12 +14,9 @@ $stmt->bindParam(":iten", $iten);
 
 $stmt->execute();
 
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$tripItinerary = $result;
+$tripItinerary = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $stmt = null;
-$result = null;
 $query = null;
 
 $query = "SELECT F.FlightNum, F.DeparetureDate, FB.Seat
@@ -32,16 +29,14 @@ $stmt->bindParam(":iten", $iten);
 
 $stmt->execute();
 
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$tripItinerary = $tripItinerary + $result;
+$tripItinerary = array_merge($tripItinerary, $stmt->fetchAll(PDO::FETCH_ASSOC));
 
 $stmt = null;
-$result = null;
+
 $query = null;
 
 $query = "SELECT H.HotelName, H.HotelAddress, HB.Room, HB.Date
-FROM Itinerary AS I, HotelBookings AS HB, Hotels AS H
+FROM HotelBookings AS HB, Hotels AS H
 WHERE HB.ItineraryID = :iten AND HB.HotelID = H.HotelID";
 
 $stmt = $pdo->prepare($query);
@@ -50,12 +45,9 @@ $stmt->bindParam(":iten", $iten);
 
 $stmt->execute();
 
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$tripItinerary = $tripItinerary + $result;
+$tripItinerary = array_merge($tripItinerary, $stmt->fetchAll(PDO::FETCH_ASSOC));
 
 $stmt = null;
-$result = null;
 $query = null;
 
 $query = "SELECT A.AttractionName, A.AttractionAddress, A.StartTime, AB.seat
@@ -68,12 +60,10 @@ $stmt->bindParam(":iten", $iten);
 
 $stmt->execute();
 
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$tripItinerary = $tripItinerary + $result;
+$tripItinerary = array_merge($tripItinerary, $stmt->fetchAll(PDO::FETCH_ASSOC));
 
 $stmt = null;
-$result = null;
 $query = null;
 
 $jsonData = json_encode($tripItinerary, JSON_PRETTY_PRINT);
