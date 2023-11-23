@@ -7,30 +7,59 @@ body {
     line-height: 1.6;
     align-items: flex-start;
 }
-
-
-.logo-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Ensure the logo stays on top of other elements */
-    padding: 10px; /* Add some space around the logo */
-    width: auto;
-    background-color: white; /* Adjust the background as needed */
-  }
-  
-  .logo {
-    height: 100px; /* Adjust the size as needed */
-    width: auto;
-  }
-  
-
-/* Main Content */
-div {
-    width: 60%;
-    margin: auto;
-    overflow: hidden;
+.nav{
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    line-height: 60px;
+    z-index: 100;
+    border-radius: 20px;
 }
+.logo{
+    padding-top: 10px;
+    
+    font-size: 25px;
+    font-weight: 900;
+    
+}
+.logo a{
+    text-decoration: none;
+    color: #000;
+}
+.right-links a{
+    padding: 0 10px;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.btn{
+    height: 35px;
+    background: #6496c1;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s;
+    margin-top: 10px;
+    padding: 0px 10px;
+}
+.btn:hover{
+    opacity: 0.82;
+}
+.links{
+    margin-bottom: 15px;
+}
+.submit{
+    width: 100%;
+}
+/* Main Content */
+
 
 .search-container {
     width: 60%;
@@ -50,6 +79,14 @@ form {
     margin-top: 20px;
     border: 1px solid #ddd;
     border-radius: 20px;
+}
+
+#Json {
+        background: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
 }
 
 input[type="text"],
@@ -75,3 +112,66 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background: #555;
 }
+button[type="button"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #6496c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="button"]:hover {
+    background: #555;
+}
+
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+  }
+  input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+  }
+  input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+  }
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9; 
+  }
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
+  

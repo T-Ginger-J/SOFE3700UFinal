@@ -55,15 +55,15 @@
     <div class="container">
         <div class="box form-box">
              <header>Login</header>
-             <form action="" method="post">
+             <form action="../includes/login.inc.php" method="post">
                 <div class="field input">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" autocomplete="off" required >
+                    <input type="text" name="username" id="username" autocomplete="off" >
                 </div>
 
                 <div class="field input">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" autocomplete="off" required >
+                    <input type="password" name="password" id="password" autocomplete="off" >
                 </div>
 
                 <div class="field">
