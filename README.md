@@ -14,4 +14,5 @@ copy past the below sql code found in the 'Project.sql' file in order to produce
     <li>In your browser, type **localhost/phpmyadmin** which should take you to the database page.</li>
     <li>Click on **Import** in the top tab, and choose **Project.sql** that you have cloned into the *File to import* section. Then click import.</li>
     <li>This will make sure that you have the right database schema that works with our code.</li>
+    <li>Now in another browser, enter *localhost*, and navigate to LoginAndRegistration to **registration.php** not .html. This is the start of the project, make a valid username and password, then head over to login.php to log in.</li>
 </ol>
